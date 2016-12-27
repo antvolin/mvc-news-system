@@ -1,0 +1,11 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+DirectoryIndex index.php index.htm index.html
+
+#RewriteCond %{REQUEST_URI} !^other_app/[^/]+/?$
+#RewriteRule ^([^/]+)/?$ other_app\/$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
